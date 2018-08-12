@@ -11,6 +11,14 @@ const routes: Routes = [
     component: AppointmentSchedulerComponent
   },
   {
+    path: 'avtale/:serviceName',
+    component: AppointmentSchedulerComponent
+  },
+  {
+    path: 'tjenester',
+    component: ServicesComponent
+  },
+  {
     path: 'home',
     component: HomeComponent
   },
@@ -19,13 +27,9 @@ const routes: Routes = [
     redirectTo: '/home',
     pathMatch: 'full'
   },
-  { 
-    path: '**', 
-    component: PageNotFoundComponent 
-  },
   {
-    path: 'tjenester',
-    component: ServicesComponent
+    path: '**',
+    component: PageNotFoundComponent
   }
 ];
 

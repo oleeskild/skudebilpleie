@@ -3,3 +3,9 @@
 body{
     font-family: 'Roboto', sans-serif;
 }
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}

@@ -6,7 +6,19 @@ import { AppComponent } from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AppointmentSchedulerComponent } from './appointment-scheduler/appointment-scheduler.component'
 import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatDividerModule, MatGridListModule, MatListModule, MatStepperModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule, MatDatepickerModule, MatRadioModule} from '@angular/material';
+import {
+  MatDividerModule,
+  MatGridListModule,
+  MatListModule,
+  MatStepperModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatButtonModule,
+  MatIconModule,
+  MatDatepickerModule,
+  MatRadioModule,
+  MatCardModule
+} from '@angular/material';
 import {MatMomentDateModule} from '@angular/material-moment-adapter';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ServiceSelectorComponent } from './service-selector/service-selector.component';
@@ -18,6 +30,7 @@ import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { ServicesComponent } from './services/services.component';
+import { ServiceCardComponent } from './service-card/service-card.component';
 
 
 @NgModule({
@@ -27,7 +40,8 @@ import { ServicesComponent } from './services/services.component';
     ServiceSelectorComponent,
     HomeComponent,
     PageNotFoundComponent,
-    ServicesComponent
+    ServicesComponent,
+    ServiceCardComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +63,8 @@ import { ServicesComponent } from './services/services.component';
     MatRadioModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    MatCardModule
   ],
   providers: [
     {provide: MAT_DATE_LOCALE, useValue: 'nb'},

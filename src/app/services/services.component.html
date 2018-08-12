@@ -1,3 +1,5 @@
-<p>
-  services works!
-</p>
+<div class="flex">
+  <div class="service-card" *ngFor="let service of services">
+    <app-service-card [service]="service"></app-service-card>
+  </div>
+</div>

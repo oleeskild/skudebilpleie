@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { AppointmentService } from '../appointment.service';
 
 @Component({
   selector: 'app-appointment-scheduler',
@@ -8,27 +9,15 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 })
 export class AppointmentSchedulerComponent implements OnInit {
 
-  //firstFormGroup: FormGroup;
-  //secondFormGroup: FormGroup;
-
   timeArr: Date[];
 
   selectedDate: Date;
 
-  constructor(private _formBuilder: FormBuilder) { }
+
+  constructor(private appointmentService: AppointmentService) { }
 
   ngOnInit() {
-    /*this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required],
-      timeControl: new FormControl()
-    });
-    this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required]
-    });*/
-
-  
-
-    
+    this.appointmentService.getAppointment("2");    
   }
 
   dateChange(event){

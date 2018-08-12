@@ -11,12 +11,16 @@ import {MatMomentDateModule} from '@angular/material-moment-adapter';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ServiceSelectorComponent } from './service-selector/service-selector.component';
 import { MAT_DATE_LOCALE } from '@angular/material';
+import { HomeComponent } from './home/home.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AppointmentSchedulerComponent,
-    ServiceSelectorComponent
+    ServiceSelectorComponent,
+    HomeComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

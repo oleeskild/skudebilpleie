@@ -13,6 +13,12 @@ import { ServiceSelectorComponent } from './service-selector/service-selector.co
 import { MAT_DATE_LOCALE } from '@angular/material';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { AngularFireModule } from 'angularfire2';
+import { environment } from '../environments/environment';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { ServicesComponent } from './services/services.component';
+
 
 @NgModule({
   declarations: [
@@ -20,7 +26,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     AppointmentSchedulerComponent,
     ServiceSelectorComponent,
     HomeComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    ServicesComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +46,10 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     MatIconModule,
     MatDatepickerModule,
     MatMomentDateModule,
-    MatRadioModule
+    MatRadioModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AngularFireAuthModule
   ],
   providers: [
     {provide: MAT_DATE_LOCALE, useValue: 'nb'},

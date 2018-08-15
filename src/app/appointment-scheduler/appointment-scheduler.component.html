@@ -1,56 +1,37 @@
 <div class="content">
-    <h1>Bestill Avtale</h1>
-    <mat-divider></mat-divider>
+  <h1>Bestill Avtale</h1>
+  <mat-divider></mat-divider>
 
-    <div class="container">
-        <mat-vertical-stepper [linear]="true" #stepper>
-            <mat-step >
-                <form name="date-picker">
-                    <ng-template matStepLabel>Velg tjeneste og tid</ng-template>
-                    <mat-form-field>
-                        <input matInput (dateChange)="dateChange($event)" [matDatepicker]="picker" placeholder="Velg dato">
-                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                        <mat-datepicker #picker></mat-datepicker>
-                    </mat-form-field>
-                    <br>
-                    <div class="time-picker">
-                        <mat-radio-group name="time-picker" [(ngModel)]="selectedDate">
-                            <mat-radio-button class="time-selection" *ngFor="let date of timeArr" value="{{date}}">{{date.getHours()}}:{{(date.getMinutes() + "0").substring(0,2)}}</mat-radio-button>
-                        </mat-radio-group>
-                    </div>
-                    <div>
-                        <button mat-button matStepperNext>Neste</button>
-                    </div>
-                </form>
-            </mat-step>
-            <mat-step >
-                <form >
-                    <ng-template matStepLabel>Kontaktinformasjon</ng-template>
-                    <mat-form-field>
-                        <input matInput placeholder="Fullt navn" required>
-                    </mat-form-field>
-                    <br>
-                    <mat-form-field>
-                        <input matInput placeholder="Email" required>
-                    </mat-form-field>
-                    <br>
-                    <mat-form-field>
-                        <input matInput placeholder="Telfonnummer">
-                    </mat-form-field>
-                    <div>
-                        <button mat-button matStepperPrevious>Tilbake</button>
-                        <button mat-button matStepperNext>Neste</button>
-                    </div>
-                </form>
-            </mat-step>
-            <mat-step>
-                <ng-template matStepLabel>Bekreftelse</ng-template>
-                Din bestilling er gjennomført
-                <div>
-                    <button mat-button matStepperPrevious>Back</button>
-                    <button mat-button (click)="stepper.reset()">Reset</button>
-                </div>
-            </mat-step>
-        </mat-vertical-stepper>
-    </div>
+  <div class="container">
+    <mat-vertical-stepper [linear]="true" #stepper>
+      <mat-step>
+        <ng-template matStepLabel>Velg tjeneste</ng-template>
+        <app-service-selector [services]="services"></app-service-selector>
+        <button mat-button matStepperNext>Neste</button>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Velg tid</ng-template>
+        <app-date-time-selector></app-date-time-selector>
+        <div>
+          <button mat-button matStepperPrevious>Tilbake</button>
+          <button mat-button matStepperNext>Neste</button>
+        </div>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Kontaktinformasjon</ng-template>
+        <app-contact-info></app-contact-info>
+        <div>
+          <button mat-button matStepperPrevious>Tilbake</button>
+          <button mat-button matStepperNext>Neste</button>
+        </div>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Bekreftelse</ng-template>
+        <app-order-receipt></app-order-receipt>
+        <div>
+          <button mat-button matStepperPrevious>Tilbake</button>
+        </div>
+      </mat-step>
+    </mat-vertical-stepper>
+  </div>
 </div>

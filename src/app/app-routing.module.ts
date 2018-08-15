@@ -7,11 +7,11 @@ import { ServicesComponent } from './services/services.component';
 
 const routes: Routes = [
   {
-    path: 'avtale',
+    path: 'avtale/:serviceName',
     component: AppointmentSchedulerComponent
   },
   {
-    path: 'avtale/:serviceName',
+    path: 'avtale',
     component: AppointmentSchedulerComponent
   },
   {

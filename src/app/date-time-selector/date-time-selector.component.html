@@ -1,0 +1,13 @@
+<form name="date-picker">
+  <mat-form-field>
+    <input matInput (dateChange)="dateChange($event)" [matDatepicker]="picker" placeholder="Velg dato">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <br>
+  <div class="time-picker">
+    <mat-radio-group name="time-picker" [(ngModel)]="selectedDate">
+      <mat-radio-button class="time-selection" *ngFor="let date of timeArr" value="{{date}}">{{date.getHours()}}:{{(date.getMinutes() + "0").substring(0,2)}}</mat-radio-button>
+    </mat-radio-group>
+  </div>
+</form>

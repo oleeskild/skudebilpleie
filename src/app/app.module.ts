@@ -31,6 +31,10 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { ServicesComponent } from './services/services.component';
 import { ServiceCardComponent } from './service-card/service-card.component';
+import { DateTimeSelectorComponent } from './date-time-selector/date-time-selector.component';
+import { ContactInfoComponent } from './contact-info/contact-info.component';
+import { OrderReceiptComponent } from './order-receipt/order-receipt.component';
+import { ServiceListItemComponent } from './service-list-item/service-list-item.component';
 
 
 @NgModule({
@@ -41,7 +45,11 @@ import { ServiceCardComponent } from './service-card/service-card.component';
     HomeComponent,
     PageNotFoundComponent,
     ServicesComponent,
-    ServiceCardComponent
+    ServiceCardComponent,
+    DateTimeSelectorComponent,
+    ContactInfoComponent,
+    OrderReceiptComponent,
+    ServiceListItemComponent
   ],
   imports: [
     BrowserModule,

@@ -11,6 +11,9 @@ export class ServiceCardComponent implements OnInit {
   @Input()
   service: Service;
 
+  @Input()
+  showImage: boolean = true;
+
   constructor() {
   }
 

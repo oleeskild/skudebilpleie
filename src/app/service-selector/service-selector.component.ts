@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Service} from "../models/service";
 
 @Component({
   selector: 'app-service-selector',
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./service-selector.component.css']
 })
 export class ServiceSelectorComponent implements OnInit {
+
+  @Input()
+  private services: Service[] = [];
 
   constructor() { }
 

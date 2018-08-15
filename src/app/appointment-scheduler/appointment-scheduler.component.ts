@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
-import { AppointmentService } from '../appointment.service';
+import {Component, OnInit} from '@angular/core';
+import {AppointmentService} from '../appointment.service';
+import {ActivatedRoute} from "@angular/router";
+import {ServiceService} from "../service.service";
+import {Service} from "../models/service";
 
 @Component({
   selector: 'app-appointment-scheduler',
@@ -13,11 +15,24 @@ export class AppointmentSchedulerComponent implements OnInit {
 
   selectedDate: Date;
 
+  private services: Service[] = [];
+  private selectedService: Service;
 
-  constructor(private appointmentService: AppointmentService) { }
+  constructor(private appointmentService: AppointmentService, private route: ActivatedRoute, private serviceService: ServiceService) { }
 
   ngOnInit() {
-    this.appointmentService.getAppointment("2");    
+    this.appointmentService.getAppointment("2");
+    this.serviceService.getServices().subscribe(services => {
+      this.services = services;
+      this.route.params.subscribe(params =>{
+        let selectedServiceName = params["serviceName"];
+        let selectedService = services.find(service => {
+          return service.name.toLowerCase() === selectedServiceName.toLowerCase();
+        });
+        this.selectedService = selectedService;
+      });
+    });
+
   }
 
   dateChange(event){
@@ -41,7 +56,7 @@ export class AppointmentSchedulerComponent implements OnInit {
     this.timeArr = timeArr;
   }
 
-  
-  
+
+
 
 }

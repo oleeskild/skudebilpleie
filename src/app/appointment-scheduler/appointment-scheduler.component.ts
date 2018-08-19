@@ -1,9 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {AppointmentService} from '../appointment.service';
-import {ActivatedRoute} from "@angular/router";
-import {ServiceService} from "../service.service";
-import {Service} from "../models/service";
-import {Appointment} from "../models/appointment"
+import { Component, OnInit } from '@angular/core';
+import { AppointmentService } from '../appointment.service';
+import { ActivatedRoute } from "@angular/router";
+import { ServiceService } from "../service.service";
+import { Service } from "../models/service";
+import { Appointment } from "../models/appointment"
 import { MatStepper } from '@angular/material';
 
 @Component({
@@ -16,9 +16,9 @@ export class AppointmentSchedulerComponent implements OnInit {
   timeArr: Date[];
 
   selectedDate: Date;
-  private appointmentsAtSelectedDate: Appointment[];
 
-  serviceStepName: string = "Velg tjeneste";
+  serviceStepName = "Velg tjeneste";
+  dateStepName = "Velg tid";
 
   private services: Service[] = [];
   private selectedService: Service;
@@ -40,13 +40,22 @@ export class AppointmentSchedulerComponent implements OnInit {
     });
   }
 
-  goForward(stepper: MatStepper){
+  goForward(stepper: MatStepper) {
     stepper.next();
   }
 
-  setSelectedService(service: Service){
+  setSelectedService(service: Service) {
     this.selectedService = service;
     this.serviceStepName = "Valgt tjeneste: " + service.name;
+  }
+
+  setSelectedDate(date: Date) {
+    date = new Date(date);
+    this.selectedDate = date;
+
+    this.dateStepName = `Valgt tid: 
+      ${date.getDate()}.${(date.getMonth())}.${date.getFullYear()} 
+      Klokken ${(date.getHours())}:${(date.getMinutes() + "0").substring(0,2)}`
   }
 
 }

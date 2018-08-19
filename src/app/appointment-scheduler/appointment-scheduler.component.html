@@ -10,8 +10,10 @@
                               (selectedService)="setSelectedService($event); goForward(stepper)"></app-service-selector>
       </mat-step>
       <mat-step>
-        <ng-template matStepLabel>Velg tid</ng-template>
-        <app-date-time-selector *ngIf="selectedService" [selectedService]="selectedService"></app-date-time-selector>
+        <ng-template matStepLabel>{{dateStepName}}</ng-template>
+        <app-date-time-selector *ngIf="selectedService" 
+        [selectedService]="selectedService"
+        (dateSelectedEvent)="setSelectedDate($event); goForward(stepper)"></app-date-time-selector>
         <div>
           <button mat-button matStepperPrevious>Tilbake</button>
           <button mat-button matStepperNext>Neste</button>

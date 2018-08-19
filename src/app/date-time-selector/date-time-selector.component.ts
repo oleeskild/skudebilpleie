@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import {Appointment} from '../models/appointment';
 import { AppointmentService } from '../appointment.service';
 import { Service } from '../models/service';
@@ -15,25 +15,32 @@ export class DateTimeSelectorComponent implements OnInit {
 
   @Input()
   selectedService: Service;
+
+  @Output()
+  dateSelectedEvent = new EventEmitter<Date>(); 
   
-  private appointmentsAtSelectedDate: Appointment[];
+  private appointmentsAtSelectedDate: Appointment[] = [];
 
   constructor(private appointmentService: AppointmentService) { }
 
   ngOnInit() {
   }
 
+  emitDateSelection(date: Date){
+    console.log(date);
+    this.dateSelectedEvent.emit(date);
+  }
+
   dateChange(event) {
     this.selectedDate = event.value._d;
     this.appointmentService.getAppointmentsByDate(this.selectedDate).subscribe(appointments => {
-      console.log(appointments);
       this.appointmentsAtSelectedDate = appointments;
       this.createTimeArray(this.selectedDate);
     });
   }
 
   isAvailable(date: Date, service: Service): boolean {
-    let found = this.appointmentsAtSelectedDate.find(appointment => {
+    let foundOverlappingAppointment = this.appointmentsAtSelectedDate.find(appointment => {
       let x1 = date;
       let x2 = new Date(date);
       x2.setMinutes(x1.getMinutes() + service.durationMin);
@@ -44,10 +51,10 @@ export class DateTimeSelectorComponent implements OnInit {
       y2.setMinutes(y1.getMinutes() + appointment.durationInMin);
 
       let isOverlap = (x1 < y2 && y1 < x2);
-      return !isOverlap;
+      return isOverlap;
     });
 
-    return found ? true : false;
+    return foundOverlappingAppointment ?  false : true;
   }
 
 createTimeArray(chosenDate: Date) {

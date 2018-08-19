@@ -18,45 +18,44 @@ export class AppointmentSchedulerComponent implements OnInit {
   private services: Service[] = [];
   private selectedService: Service;
 
-  constructor(private appointmentService: AppointmentService, private route: ActivatedRoute, private serviceService: ServiceService) { }
+  constructor(private appointmentService: AppointmentService, private route: ActivatedRoute, private serviceService: ServiceService) {
+  }
 
   ngOnInit() {
     this.appointmentService.getAppointment("2");
     this.serviceService.getServices().subscribe(services => {
       this.services = services;
-      this.route.params.subscribe(params =>{
+      this.route.params.subscribe(params => {
         let selectedServiceName = params["serviceName"];
-        let selectedService = services.find(service => {
-          return service.name.toLowerCase() === selectedServiceName.toLowerCase();
-        });
-        this.selectedService = selectedService;
+        if (selectedServiceName) {
+          this.selectedService = services.find(service => {
+            return service.name.toLowerCase() === selectedServiceName.toLowerCase();
+          });
+        }
       });
     });
-
   }
 
-  dateChange(event){
+  dateChange(event) {
     this.createTimeArray(event.value._d);
   }
 
-  createTimeArray(chosenDate: Date){
+  createTimeArray(chosenDate: Date) {
     let timeArr: Date[] = [];
-    for(let i = 8; i<=16; i++){
-       let date = new Date(chosenDate);
-       date.setHours(i);
-       date.setMinutes(0);
-       date.setSeconds(0);
-       timeArr.push(date);
-       date = new Date(chosenDate);
-       date.setHours(i);
-       date.setMinutes(30);
-       date.setSeconds(0);
-       timeArr.push(date);
+    for (let i = 8; i <= 16; i++) {
+      let date = new Date(chosenDate);
+      date.setHours(i);
+      date.setMinutes(0);
+      date.setSeconds(0);
+      timeArr.push(date);
+      date = new Date(chosenDate);
+      date.setHours(i);
+      date.setMinutes(30);
+      date.setSeconds(0);
+      timeArr.push(date);
     }
     this.timeArr = timeArr;
   }
-
-
 
 
 }

@@ -4,6 +4,7 @@ import {ActivatedRoute} from "@angular/router";
 import {ServiceService} from "../service.service";
 import {Service} from "../models/service";
 import {Appointment} from "../models/appointment"
+import { MatStepper } from '@angular/material';
 
 @Component({
   selector: 'app-appointment-scheduler',
@@ -17,6 +18,7 @@ export class AppointmentSchedulerComponent implements OnInit {
   selectedDate: Date;
   private appointmentsAtSelectedDate: Appointment[];
 
+  serviceStepName: string = "Velg tjeneste";
 
   private services: Service[] = [];
   private selectedService: Service;
@@ -38,35 +40,13 @@ export class AppointmentSchedulerComponent implements OnInit {
     });
   }
 
-  dateChange(event) {
-    this.selectedDate = event.value._d;
-    this.appointmentService.getAppointmentsByDate(this.selectedDate).subscribe(appointments => {
-      this.appointmentsAtSelectedDate = appointments;
-      this.createTimeArray(this.selectedDate);
-    });
+  goForward(stepper: MatStepper){
+    stepper.next();
   }
 
-  isAvailable(date: Date, service: Service): boolean {
-    let found = this.appointmentsAtSelectedDate.find(appointment => {
-      let end = new Date(appointment.dateTime);
-      end.setMinutes(end.getMinutes() + appointment.durationInMin);
-      return date < appointment.dateTime && date < end;
-    });
-    return found ? true : false;
+  setSelectedService(service: Service){
+    this.selectedService = service;
+    this.serviceStepName = "Valgt tjeneste: " + service.name;
   }
-
-  createTimeArray(chosenDate: Date) {
-    let timeArr: Date[] = [];
-    for (let i = 8; i <= 16; i++) {
-      let date = new Date(chosenDate);
-      date.setHours(i, 0, 0, 0);
-      timeArr.push(date);
-      date = new Date(chosenDate);
-      date.setHours(i, 30,0,0);
-      timeArr.push(date);
-    }
-    this.timeArr = timeArr;
-  }
-
 
 }

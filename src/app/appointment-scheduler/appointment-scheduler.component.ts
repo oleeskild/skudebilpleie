@@ -22,9 +22,9 @@ export class AppointmentSchedulerComponent implements OnInit {
   selectedService: Service = new Service();
   selectedDate: Date = new Date();
 
-  contactInfo: ContactInfo = new ContactInfo();
+  contactInfo: ContactInfo = {email: "", name: "", phone: ""};
 
-  appointment: Appointment;
+  appointmentCreated = false;
 
   constructor(private appointmentService: AppointmentService, private route: ActivatedRoute, private serviceService: ServiceService) {
   }
@@ -52,7 +52,6 @@ export class AppointmentSchedulerComponent implements OnInit {
     this.selectedService = service;
     this.serviceStepName = "Valgt tjeneste: " + service.name;
     console.log(service);
-    //this.appointment.serviceId = service;
   }
 
   setSelectedDate(date: Date) {
@@ -64,6 +63,23 @@ export class AppointmentSchedulerComponent implements OnInit {
       Klokken ${(date.getHours())}:${(date.getMinutes() + "0").substring(0,2)}`
   }
 
+  postAppointment(){
+    let appointment: Appointment = {
+      dateTime : this.selectedDate,
+      contactInfo: {
+        email: this.contactInfo.email,
+        phone: this.contactInfo.phone,
+        name: this.contactInfo.name
+      },
+      durationInMin : this.selectedService.durationMin,
+      serviceId : `/services/${this.selectedService.key}`,
+      finished: false
+    };
+    
+    this.appointmentService.createAppointment(appointment).then(ref=>{
+      this.appointmentCreated = true;
+    });
+  }
 
 
 }

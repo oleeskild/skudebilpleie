@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import {AngularFirestore} from "angularfire2/firestore";
 import {Observable} from "rxjs/index";
 import {Appointment} from "./models/appointment";
+import * as firebase from 'angularfire2';
+
 
 @Injectable({
   providedIn: 'root'
@@ -26,5 +28,9 @@ export class AppointmentService {
 
   getAppointment(id: string): Observable<Appointment> {
     return this.db.doc<Appointment>('appointments/' + id).valueChanges();
+  }
+
+  createAppointment(appointment: Appointment){
+    return this.db.collection<Appointment>('appointments').add(appointment);
   }
 }

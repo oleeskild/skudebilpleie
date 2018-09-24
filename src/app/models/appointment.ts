@@ -1,7 +1,7 @@
 import { Timestamp } from "firebase/functions";
 import {ContactInfo} from "./contact-info";
 
-export class Appointment {
+export interface Appointment {
   dateTime: Timestamp;
   finished: boolean;
   serviceId: string;

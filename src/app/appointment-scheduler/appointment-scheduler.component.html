@@ -33,8 +33,13 @@
           [selectedDate]="selectedDate"
           [selectedService]="selectedService"
           [contactInfo]="contactInfo"></app-order-receipt>
-        <div>
+          <div *ngIf="appointmentCreated" style="display: flex; align-items: center">
+            <span><mat-icon style="color: green; font-size: 50px; width: 50px">done</mat-icon></span>
+            <span>Bestillingen din er gjennomført</span>
+          </div>
+        <div *ngIf="!appointmentCreated">
           <button mat-button matStepperPrevious>Tilbake</button>
+          <button mat-button (click)="postAppointment()">Gjennomfør bestilling</button>
         </div>
       </mat-step>
     </mat-vertical-stepper>

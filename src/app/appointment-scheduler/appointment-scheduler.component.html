@@ -5,13 +5,15 @@
   <div class="container">
     <mat-vertical-stepper [linear]="true" #stepper>
       <mat-step>
-        <ng-template matStepLabel>Velg tjeneste</ng-template>
-        <app-service-selector [services]="services"></app-service-selector>
-        <button mat-button matStepperNext>Neste</button>
+        <ng-template matStepLabel>{{serviceStepName}}</ng-template>
+        <app-service-selector [services]="services"
+                              (selectedService)="setSelectedService($event); goForward(stepper)"></app-service-selector>
       </mat-step>
       <mat-step>
-        <ng-template matStepLabel>Velg tid</ng-template>
-        <app-date-time-selector></app-date-time-selector>
+        <ng-template matStepLabel>{{dateStepName}}</ng-template>
+        <app-date-time-selector *ngIf="selectedService" 
+        [selectedService]="selectedService"
+        (dateSelectedEvent)="setSelectedDate($event); goForward(stepper)"></app-date-time-selector>
         <div>
           <button mat-button matStepperPrevious>Tilbake</button>
           <button mat-button matStepperNext>Neste</button>

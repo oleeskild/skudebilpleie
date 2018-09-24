@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, EventEmitter, Output} from '@angular/core';
 import {Service} from "../models/service";
 
 @Component({
@@ -11,9 +11,16 @@ export class ServiceSelectorComponent implements OnInit {
   @Input()
   private services: Service[] = [];
 
+  @Output()
+  selectedService = new EventEmitter<Service>();
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  emitSelectedService(service: Service){
+    this.selectedService.emit(service);
   }
 
 }

@@ -1,5 +1,7 @@
+import { Timestamp } from "firebase/functions";
+
 export class Appointment {
-  dateTime: Date;
+  dateTime: Timestamp;
   finished: boolean;
   serviceId: string;
   durationInMin: number;

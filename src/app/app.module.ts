@@ -35,6 +35,7 @@ import { DateTimeSelectorComponent } from './date-time-selector/date-time-select
 import { ContactInfoComponent } from './contact-info/contact-info.component';
 import { OrderReceiptComponent } from './order-receipt/order-receipt.component';
 import { ServiceListItemComponent } from './service-list-item/service-list-item.component';
+import { TimeFormatPipe } from './time-format.pipe';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { ServiceListItemComponent } from './service-list-item/service-list-item.
     DateTimeSelectorComponent,
     ContactInfoComponent,
     OrderReceiptComponent,
-    ServiceListItemComponent
+    ServiceListItemComponent,
+    TimeFormatPipe
   ],
   imports: [
     BrowserModule,

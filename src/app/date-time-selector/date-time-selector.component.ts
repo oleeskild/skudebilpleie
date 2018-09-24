@@ -10,15 +10,15 @@ import { Service } from '../models/service';
 })
 export class DateTimeSelectorComponent implements OnInit {
 
-  private timeArr: Date[] = [];
-  private selectedDate: Date;
+  timeArr: Date[] = [];
+  selectedDate: Date;
 
   @Input()
   selectedService: Service;
 
   @Output()
-  dateSelectedEvent = new EventEmitter<Date>(); 
-  
+  dateSelectedEvent = new EventEmitter<Date>();
+
   private appointmentsAtSelectedDate: Appointment[] = [];
 
   constructor(private appointmentService: AppointmentService) { }

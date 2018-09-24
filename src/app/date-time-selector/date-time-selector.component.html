@@ -7,11 +7,11 @@
   <br>
   <div class="time-picker">
     <mat-radio-group name="time-picker" [(ngModel)]="selectedDate" (change)="emitDateSelection(selectedDate)">
-      <mat-radio-button class="time-selection" 
-      *ngFor="let date of timeArr" 
+      <mat-radio-button class="time-selection"
+      *ngFor="let date of timeArr"
       [ngClass]="{'disabled': !isAvailable(date, selectedService)}"
       [disabled]="!isAvailable(date, selectedService)"
-      value="{{date}}">{{date.getHours()}}:{{(date.getMinutes() + "0").substring(0,2)}}</mat-radio-button>
+      value="{{date}}">{{date | timeFormat}}</mat-radio-button>
     </mat-radio-group>
   </div>
 </form>

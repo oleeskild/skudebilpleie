@@ -1,13 +1,13 @@
-<form>
+<form name="contact-info">
   <mat-form-field>
-    <input matInput placeholder="Fullt navn" required>
+    <input matInput [(ngModel)]="contactInfo.name" placeholder="Fullt navn" required name=" name">
   </mat-form-field>
   <br>
   <mat-form-field>
-    <input matInput placeholder="Email" required>
+    <input matInput [(ngModel)]="contactInfo.email" placeholder="Email" required name="email">
   </mat-form-field>
   <br>
   <mat-form-field>
-    <input matInput placeholder="Telfonnummer">
+    <input matInput [(ngModel)]="contactInfo.phone" placeholder="Telefonnummer" name="phone">
   </mat-form-field>
 </form>

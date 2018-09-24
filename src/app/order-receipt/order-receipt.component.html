@@ -1,1 +1,17 @@
-Din bestilling er gjennomført
+<div>
+  <h2>Dato:</h2>
+  {{selectedDate | date:'dd.MM.yyyy' }} {{ selectedDate | timeFormat }} - {{getEndOfAppointmentDate(selectedDate) | timeFormat}}
+</div>
+<div>
+  <h2>Tjeneste:</h2>
+  {{selectedService.name}}
+</div>
+<div>
+  <h2>Kontaktinformasjon:</h2>
+  <h3>Navn:</h3>
+  {{contactInfo.name}}
+  <h3>Epost:</h3>
+  {{contactInfo.email}}
+  <h3>Telefon:</h3>
+  {{contactInfo.phone}}
+</div>

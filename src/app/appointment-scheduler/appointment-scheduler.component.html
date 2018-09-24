@@ -11,7 +11,7 @@
       </mat-step>
       <mat-step>
         <ng-template matStepLabel>{{dateStepName}}</ng-template>
-        <app-date-time-selector *ngIf="selectedService" 
+        <app-date-time-selector *ngIf="selectedService"
         [selectedService]="selectedService"
         (dateSelectedEvent)="setSelectedDate($event); goForward(stepper)"></app-date-time-selector>
         <div>
@@ -21,15 +21,18 @@
       </mat-step>
       <mat-step>
         <ng-template matStepLabel>Kontaktinformasjon</ng-template>
-        <app-contact-info></app-contact-info>
+        <app-contact-info [contactInfo]="contactInfo"></app-contact-info>
         <div>
           <button mat-button matStepperPrevious>Tilbake</button>
-          <button mat-button matStepperNext>Neste</button>
+          <button mat-button (click)="goForward(stepper)">Neste</button>
         </div>
       </mat-step>
       <mat-step>
         <ng-template matStepLabel>Bekreftelse</ng-template>
-        <app-order-receipt></app-order-receipt>
+        <app-order-receipt
+          [selectedDate]="selectedDate"
+          [selectedService]="selectedService"
+          [contactInfo]="contactInfo"></app-order-receipt>
         <div>
           <button mat-button matStepperPrevious>Tilbake</button>
         </div>

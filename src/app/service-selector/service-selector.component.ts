@@ -9,7 +9,7 @@ import {Service} from "../models/service";
 export class ServiceSelectorComponent implements OnInit {
 
   @Input()
-  private services: Service[] = [];
+  services: Service[] = [];
 
   @Output()
   selectedService = new EventEmitter<Service>();

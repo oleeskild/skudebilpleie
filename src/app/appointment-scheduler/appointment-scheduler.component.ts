@@ -5,6 +5,7 @@ import { ServiceService } from "../service.service";
 import { Service } from "../models/service";
 import { Appointment } from "../models/appointment"
 import { MatStepper } from '@angular/material';
+import {ContactInfo} from "../models/contact-info";
 
 @Component({
   selector: 'app-appointment-scheduler',
@@ -13,15 +14,17 @@ import { MatStepper } from '@angular/material';
 })
 export class AppointmentSchedulerComponent implements OnInit {
 
-  timeArr: Date[];
-
-  selectedDate: Date;
-
   serviceStepName = "Velg tjeneste";
   dateStepName = "Velg tid";
 
-  private services: Service[] = [];
-  private selectedService: Service;
+  services: Service[] = [];
+
+  selectedService: Service = new Service();
+  selectedDate: Date = new Date();
+
+  contactInfo: ContactInfo = new ContactInfo();
+
+  appointment: Appointment;
 
   constructor(private appointmentService: AppointmentService, private route: ActivatedRoute, private serviceService: ServiceService) {
   }
@@ -42,11 +45,14 @@ export class AppointmentSchedulerComponent implements OnInit {
 
   goForward(stepper: MatStepper) {
     stepper.next();
+    console.log(this.contactInfo);
   }
 
   setSelectedService(service: Service) {
     this.selectedService = service;
     this.serviceStepName = "Valgt tjeneste: " + service.name;
+    console.log(service);
+    //this.appointment.serviceId = service;
   }
 
   setSelectedDate(date: Date) {
@@ -57,5 +63,7 @@ export class AppointmentSchedulerComponent implements OnInit {
       ${date.getDate()}.${(date.getMonth())}.${date.getFullYear()} 
       Klokken ${(date.getHours())}:${(date.getMinutes() + "0").substring(0,2)}`
   }
+
+
 
 }

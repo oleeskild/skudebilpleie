@@ -29,4 +29,8 @@ export class ServiceService {
     return this.db.doc<Service>(serviceReference).valueChanges();
   }
 
+  add(service: Service) {
+    this.db.collection<Service>('services').add(service);
+  }
+
 }

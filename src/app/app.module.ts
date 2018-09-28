@@ -17,7 +17,8 @@ import {
   MatIconModule,
   MatDatepickerModule,
   MatRadioModule,
-  MatCardModule
+  MatCardModule,
+  MatSnackBarModule
 } from '@angular/material';
 import {MatMomentDateModule} from '@angular/material-moment-adapter';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -38,7 +39,7 @@ import { ServiceListItemComponent } from './service-list-item/service-list-item.
 import { TimeFormatPipe } from './time-format.pipe';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { AppointmentListComponent } from './appointment-list/appointment-list.component';
-import { ServiceListComponent } from './service-list/service-list.component';
+import { ServiceListComponent, NewServiceDialogComponent } from './service-list/service-list.component';
 import { LoginComponent } from './login/login.component';
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth.guard';
@@ -61,7 +62,8 @@ import { AuthGuard } from './auth.guard';
     AdminDashboardComponent,
     AppointmentListComponent,
     ServiceListComponent,
-    LoginComponent
+    LoginComponent,
+    NewServiceDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -84,12 +86,16 @@ import { AuthGuard } from './auth.guard';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
-    MatCardModule
+    MatCardModule,
+    MatSnackBarModule
   ],
   providers: [
     {provide: MAT_DATE_LOCALE, useValue: 'nb'},
     AuthService,
     AuthGuard
+  ],
+  entryComponents: [
+    NewServiceDialogComponent
   ],
   bootstrap: [AppComponent]
 })

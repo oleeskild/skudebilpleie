@@ -2,9 +2,17 @@
   <mat-card-title>
     {{service.name}}
   </mat-card-title>
+  <mat-card-subtitle>NOK {{service.price}},-</mat-card-subtitle>
+  <img width="200px" mat-card-image src="https://firebasestorage.googleapis.com/v0/b/skude-bilpleie.appspot.com/o/adult-auto-automobile-401796.jpg?alt=media&token=87b59540-5885-463b-842c-cff6cb5afaf6" />
   <mat-card-content>
-    {{service.description}}
-    {{service.durationMin}}
-    {{service.price}}
+    <p>
+      {{service.description}}
+    </p>
+    <div style="display: flex; align-items: center; padding-top: 20px;">
+      <mat-icon>schedule</mat-icon>: {{service.durationMin}} minutter
+    </div>
   </mat-card-content>
+  <mat-card-actions>
+      <button mat-stroked-button>Bestill avtale</button>
+    </mat-card-actions>
 </mat-card>

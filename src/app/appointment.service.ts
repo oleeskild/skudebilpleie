@@ -17,13 +17,20 @@ export class AppointmentService {
   }
 
   getAppointmentsByDate(date: Date): Observable<Appointment[]> {
-    let dateAtMidnight = new Date(date);
+    const dateAtMidnight = new Date(date);
     dateAtMidnight.setHours(0, 0, 0, 0);
-    let nextDateAtMidnight = new Date(dateAtMidnight);
+    const nextDateAtMidnight = new Date(dateAtMidnight);
     nextDateAtMidnight.setDate(nextDateAtMidnight.getDate() + 1);
     return this.db.collection<Appointment>('appointments', ref => ref
       .where('dateTime', '>=', dateAtMidnight)
       .where('dateTime', '<', nextDateAtMidnight)).valueChanges();
+  }
+
+  getFutureAppointments(): Observable<Appointment[]> {
+    const dateAtMidnight = new Date();
+    dateAtMidnight.setHours(0, 0, 0, 0);
+    return this.db.collection<Appointment>('appointments', ref => ref
+      .where('dateTime', '>=', dateAtMidnight)).valueChanges();
   }
 
   getAppointment(id: string): Observable<Appointment> {

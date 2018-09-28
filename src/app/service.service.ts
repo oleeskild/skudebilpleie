@@ -15,14 +15,18 @@ export class ServiceService {
 
   getServices(): Observable<Service[]> {
     return this.db.collection<Service>('services').snapshotChanges().pipe(map(references =>{
-      return references.map(serviceRef=>{
-        let service = serviceRef.payload.doc.data() as Service;
+      return references.map(serviceRef => {
+        const service = serviceRef.payload.doc.data() as Service;
         service.key = serviceRef.payload.doc.id;
 
         return service;
       });
 
     }));
+  }
+
+  getService(serviceReference: string): Observable<Service> {
+    return this.db.doc<Service>(serviceReference).valueChanges();
   }
 
 }

@@ -3,8 +3,13 @@
     display: flex;
 }
 
-.content{
-    padding: 125px 175px;
+.schedueler{
+    padding: 125px 50px;
+    width: 1200px;
+}
+
+.about-us {
+    padding: 125px 0;
 }
 
 .time-picker{

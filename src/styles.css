@@ -3,11 +3,14 @@
 
 body{
     font-family: 'Roboto', sans-serif;
-    background: rgba(0,0,0,0.1);
 }
 
 .flex {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+}
+
+mat-divider {
+  border-top-color: rgba(0,0,255,0.5);
 }

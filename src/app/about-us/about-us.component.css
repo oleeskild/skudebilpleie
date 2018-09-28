@@ -1,0 +1,8 @@
+.info {
+    padding: 10px 0;
+}
+
+.info>span{
+    display: block;
+    padding: 5px 0;
+}

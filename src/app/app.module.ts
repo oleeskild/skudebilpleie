@@ -43,6 +43,7 @@ import { ServiceListComponent, NewServiceDialogComponent } from './service-list/
 import { LoginComponent } from './login/login.component';
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth.guard';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 
 @NgModule({
@@ -63,7 +64,8 @@ import { AuthGuard } from './auth.guard';
     AppointmentListComponent,
     ServiceListComponent,
     LoginComponent,
-    NewServiceDialogComponent
+    NewServiceDialogComponent,
+    AboutUsComponent
   ],
   imports: [
     BrowserModule,

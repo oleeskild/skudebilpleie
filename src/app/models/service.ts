@@ -4,4 +4,5 @@ export class Service {
   name: string;
   price: number;
   key: string;
+  img: string;
 }

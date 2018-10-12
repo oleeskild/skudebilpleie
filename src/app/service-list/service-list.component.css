@@ -1,0 +1,20 @@
+.title{
+    font-size: 24px;
+}
+
+mat-list-item{
+    border-bottom: rgba(0,0,0,0.1) 1px solid;
+}
+
+mat-card-header{
+    display:flex;
+    justify-content: space-between;
+    align-content: baseline;
+}
+
+.add-button{
+    font-size: 32px;
+    color: green;
+    font-weight: 700;
+    cursor: pointer;
+}

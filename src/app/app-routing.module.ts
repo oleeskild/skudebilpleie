@@ -4,6 +4,9 @@ import { AppointmentSchedulerComponent } from './appointment-scheduler/appointme
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ServicesComponent } from './services/services.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { AuthGuard } from './auth.guard';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {
@@ -21,6 +24,15 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent
+  },
+  {
+    path: 'admin',
+    component: AdminDashboardComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   },
   {
     path: '',

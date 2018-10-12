@@ -1,0 +1,11 @@
+.services {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.service-item {
+    width: 48%;
+    margin: 10px;
+    cursor: pointer;
+}

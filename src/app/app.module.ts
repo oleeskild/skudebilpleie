@@ -17,7 +17,8 @@ import {
   MatIconModule,
   MatDatepickerModule,
   MatRadioModule,
-  MatCardModule
+  MatCardModule,
+  MatSnackBarModule
 } from '@angular/material';
 import {MatMomentDateModule} from '@angular/material-moment-adapter';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -36,6 +37,13 @@ import { ContactInfoComponent } from './contact-info/contact-info.component';
 import { OrderReceiptComponent } from './order-receipt/order-receipt.component';
 import { ServiceListItemComponent } from './service-list-item/service-list-item.component';
 import { TimeFormatPipe } from './time-format.pipe';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { AppointmentListComponent } from './appointment-list/appointment-list.component';
+import { ServiceListComponent, NewServiceDialogComponent } from './service-list/service-list.component';
+import { LoginComponent } from './login/login.component';
+import { AuthService } from './auth.service';
+import { AuthGuard } from './auth.guard';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 
 @NgModule({
@@ -51,7 +59,13 @@ import { TimeFormatPipe } from './time-format.pipe';
     ContactInfoComponent,
     OrderReceiptComponent,
     ServiceListItemComponent,
-    TimeFormatPipe
+    TimeFormatPipe,
+    AdminDashboardComponent,
+    AppointmentListComponent,
+    ServiceListComponent,
+    LoginComponent,
+    NewServiceDialogComponent,
+    AboutUsComponent
   ],
   imports: [
     BrowserModule,
@@ -74,10 +88,16 @@ import { TimeFormatPipe } from './time-format.pipe';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
-    MatCardModule
+    MatCardModule,
+    MatSnackBarModule
   ],
   providers: [
     {provide: MAT_DATE_LOCALE, useValue: 'nb'},
+    AuthService,
+    AuthGuard
+  ],
+  entryComponents: [
+    NewServiceDialogComponent
   ],
   bootstrap: [AppComponent]
 })

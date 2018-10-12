@@ -36,7 +36,7 @@ export class AppointmentSchedulerComponent implements OnInit {
         let selectedServiceName = params["serviceName"];
         if (selectedServiceName) {
           this.selectedService = services.find(service => {
-            return service.name.toLowerCase() === selectedServiceName.toLowerCase();
+            return service.name.split(' ')[0].toLowerCase() === selectedServiceName.toLowerCase();
           });
         }
       });

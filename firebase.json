@@ -1,5 +1,8 @@
 {
   "hosting": {
+    "predeploy": [
+      "ng build --prod"
+    ],
     "public": "dist/skudebilpleie",
     "ignore": [
       "firebase.json",

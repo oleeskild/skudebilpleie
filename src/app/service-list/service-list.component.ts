@@ -48,6 +48,9 @@ export class ServiceListComponent implements OnInit {
         <input placeholder="Pris" matInput name="price" type="number" [(ngModel)]="price">
       </mat-form-field>
       <mat-form-field>
+        <input placeholder="Bildelenke" matInput name="imagelink" type="number" [(ngModel)]="img">
+      </mat-form-field>
+      <mat-form-field>
         <textarea rows="5" placeholder="Beskrivelse" matInput name="description" [(ngModel)]="description"></textarea>
       </mat-form-field>
       <button mat-raised-button (click)="saveService()">Lagre</button>
@@ -65,6 +68,7 @@ export class NewServiceDialogComponent {
   durationInMinutes: number;
   description = '';
   price: number;
+  img = '';
 
   constructor(
     public dialogRef: MatDialogRef<NewServiceDialogComponent>,
@@ -81,7 +85,8 @@ export class NewServiceDialogComponent {
       description: this.description,
       durationMin: this.durationInMinutes,
       price: this.price,
-      key: ''
+      key: '',
+      img: this.img
     };
     this.serviceService.add(service);
     this.dialogRef.close();

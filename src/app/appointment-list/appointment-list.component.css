@@ -15,7 +15,7 @@ mat-list-item:last-child{
 }
 
 mat-list-item.appointment-item{
-    height: 150px;
+    height: 190px;
 }
 
 .appointment-info>span{

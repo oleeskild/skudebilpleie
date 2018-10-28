@@ -1,9 +1,14 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <mat-toolbar color="primary">
-  <div style="display:flex; justify-content: center">
+  <div style="display:flex; justify-content:space-between; width: 100%;">
+    <span>
     <span [routerLink]="['/home']" style="cursor: pointer; font-size: 30px">Skude Bilpleie</span>
     <button color="accent" style="font-size: 16px" mat-button [routerLink]="['avtale']">Bestill Avtale</button>
-    <button *ngIf="isAdmin" color="accent" style="font-size: 16px" mat-button [routerLink]="['admin']">Admin</button>
+    </span>
+    <span style="justify-self: end;">
+      <button *ngIf="isAdmin" color="accent" style="font-size: 16px" mat-button [routerLink]="['admin']">Admin Oversikt</button>
+      <button *ngIf="isAdmin" color="accent" style="font-size: 16px" mat-button (click)="logout()">Logg ut</button>
+    </span>
   </div>
 </mat-toolbar>
 

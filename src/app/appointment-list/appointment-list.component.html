@@ -7,6 +7,7 @@
       <mat-list-item *ngFor="let appointment of appointments" class="appointment-item">
         <div class="appointment-info">
           <span>Tid: {{appointment.dateTime.toDate() | date}} {{appointment.dateTime.toDate() | timeFormat}}</span>
+          <span>Tjeneste: {{ allServices[appointment.serviceId]}}</span>
           <span>Navn: {{appointment.contactInfo.name}}</span>
           <span>Tlf: <a href="tel:{{appointment.contactInfo.phone}}">{{appointment.contactInfo.phone}}</a></span>
           <span>Epost: <a href="mailto:{{appointment.contactInfo.email}}">{{appointment.contactInfo.email}}</a></span>

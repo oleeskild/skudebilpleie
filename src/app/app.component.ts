@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from './auth.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,12 +9,23 @@ import { AuthService } from './auth.service';
 })
 export class AppComponent {
   title = 'app';
+  isAdmin = false;
 
-  constructor(private _authService: AuthService){
-
+  constructor(private _authService: AuthService, private route: Router){
+    
   }
 
-  isAdmin(){
-    return this._authService.isAuthenticated();
+  ngOnInit(){
+    this.isAdmin = this._authService.isAuthenticated();
+    this.route.events.subscribe(change=> {
+      this.isAdmin = this._authService.isAuthenticated();
+    })
+  }
+
+  
+
+  logout(){
+    this._authService.logout();
+    this.isAdmin = this._authService.isAuthenticated();
   }
 }

@@ -3,8 +3,14 @@
   <div style="display:flex; justify-content: center">
     <span [routerLink]="['/home']" style="cursor: pointer; font-size: 30px">Skude Bilpleie</span>
     <button color="accent" style="font-size: 16px" mat-button [routerLink]="['avtale']">Bestill Avtale</button>
+    <button *ngIf="isAdmin" color="accent" style="font-size: 16px" mat-button [routerLink]="['admin']">Admin</button>
   </div>
 </mat-toolbar>
 
 <router-outlet></router-outlet>
 
+<footer>
+  <span class="bold">© Skude Bilpleie </span>
+  <br>
+  <span>Salvebakkane 7, 4280 Skudeneshavn · Tlf: 12 34 56 78 · epost@example.no</span>
+</footer>

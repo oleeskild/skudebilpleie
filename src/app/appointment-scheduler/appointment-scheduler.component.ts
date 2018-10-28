@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { AppointmentService } from '../appointment.service';
 import { ActivatedRoute } from "@angular/router";
 import { ServiceService } from "../service.service";
@@ -26,7 +26,11 @@ export class AppointmentSchedulerComponent implements OnInit {
 
   appointmentCreated = false;
 
-  constructor(private appointmentService: AppointmentService, private route: ActivatedRoute, private serviceService: ServiceService) {
+  @ViewChild('stepper') stepper: MatStepper;
+
+  constructor(private appointmentService: AppointmentService, 
+    private route: ActivatedRoute, 
+    private serviceService: ServiceService) {
   }
 
   ngOnInit() {
@@ -35,9 +39,13 @@ export class AppointmentSchedulerComponent implements OnInit {
       this.route.params.subscribe(params => {
         let selectedServiceName = params["serviceName"];
         if (selectedServiceName) {
-          this.selectedService = services.find(service => {
-            return service.name.split(' ')[0].toLowerCase() === selectedServiceName.toLowerCase();
+          let service = services.find(service => {
+            return service.name.toLowerCase() === selectedServiceName.toLowerCase();
           });
+          if(service){
+            this.setSelectedService(service);
+            this.goForward(this.stepper);
+          }
         }
       });
     });
@@ -45,13 +53,11 @@ export class AppointmentSchedulerComponent implements OnInit {
 
   goForward(stepper: MatStepper) {
     stepper.next();
-    console.log(this.contactInfo);
   }
 
   setSelectedService(service: Service) {
     this.selectedService = service;
     this.serviceStepName = "Valgt tjeneste: " + service.name;
-    console.log(service);
   }
 
   setSelectedDate(date: Date) {

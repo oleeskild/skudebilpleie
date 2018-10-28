@@ -1,29 +1,29 @@
-<mat-card>
-  <mat-card-title>
-    {{service.name}}
-  </mat-card-title>
-  <mat-card-subtitle>NOK {{service.price}},-</mat-card-subtitle>
-  <img height="400" mat-card-image [src]="service.img || 'https://firebasestorage.googleapis.com/v0/b/skude-bilpleie.appspot.com/o/adult-auto-automobile-401796.jpg?alt=media&token=87b59540-5885-463b-842c-cff6cb5afaf6'" />
-  <mat-card-content>
-    <p>
-      {{service.description}}
-    </p>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ultricies est nec rutrum condimentum. 
-      Aliquam pharetra nunc facilisis nisl blandit tincidunt. Pellentesque at erat nec nulla pretium elementum pellentesque sed erat. 
-      Cras sem nulla, rutrum quis magna a, suscipit finibus urna. Aenean non sem at justo tristique aliquam. 
-    </p>
-    <br>
-    <div style="display: flex; align-items: center; padding-top: 20px;">
-      <mat-icon>schedule</mat-icon>: {{service.durationMin}} minutter
-    </div>
+<div [class]="isSelected ? 'highlight' : ''">
 
-    <div style="display: flex; align-items: center; padding-top: 20px;">
-    <mat-icon>attach_money</mat-icon>: {{service.price}} ,-
-    </div>
+  <mat-card>
+    <mat-card-title>
+      {{service.name}}
+    </mat-card-title>
+    <mat-card-subtitle>NOK {{service.price}},-</mat-card-subtitle>
+    <img *ngIf="showImage" height="350" mat-card-image [src]="service.img || 'https://firebasestorage.googleapis.com/v0/b/skude-bilpleie.appspot.com/o/adult-auto-automobile-401796.jpg?alt=media&token=87b59540-5885-463b-842c-cff6cb5afaf6'"
+    />
+    <mat-card-content>
+      <p class="information">
+        {{service.description}} Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ultricies est nec rutrum condimentum.
+        Aliquam pharetra nunc facilisis nisl blandit tincidunt. Pellentesque at erat nec nulla pretium elementum pellentesque
+        sed erat. Cras sem nulla, rutrum quis magna a, suscipit finibus urna. Aenean non sem at justo tristique aliquam.
+      </p>
+      <div style="display: flex; align-items: center; padding-top: 20px;">
+        {{service.durationMin}} minutter
+      </div>
 
-  </mat-card-content>
-  <mat-card-actions>
-      <button *ngIf="showOrderButton" mat-stroked-button [routerLink]="['/avtale', service.name.split(' ')[0]]">Bestill avtale</button>
-  </mat-card-actions>
-</mat-card>
+      <div style="display: flex; align-items: center; padding-top: 20px;">
+        {{service.price}} ,-
+      </div>
+
+    </mat-card-content>
+    <mat-card-actions>
+      <button *ngIf="showOrderButton" mat-stroked-button [routerLink]="['/avtale', service.name]">Bestill avtale</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

@@ -5,3 +5,20 @@
 mat-list-item{
     border-bottom: rgba(0,0,0,0.1) 1px solid;
 }
+mat-list-item:last-child{
+    border-bottom: none;
+}
+
+.appointment-info{
+    display: flex;
+    flex-direction: column;
+}
+
+mat-list-item.appointment-item{
+    height: 150px;
+}
+
+.appointment-info>span{
+    padding: 4px 0;
+    font-size: 18px
+}

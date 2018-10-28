@@ -8,7 +8,8 @@
       <mat-step>
         <ng-template matStepLabel>{{serviceStepName}}</ng-template>
         <app-service-selector [services]="services"
-                              (selectedService)="setSelectedService($event); goForward(stepper)"></app-service-selector>
+                              (selectedService)="setSelectedService($event); goForward(stepper)"
+                              [serviceSelected]="selectedService"></app-service-selector>
       </mat-step>
       <mat-step>
         <ng-template matStepLabel>{{dateStepName}}</ng-template>

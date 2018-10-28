@@ -4,8 +4,14 @@
   </mat-card-header>
   <mat-card-content>
     <mat-list>
-      <mat-list-item *ngFor="let appointment of appointments">
-        {{appointment.dateTime.toDate() | date}} {{appointment.dateTime.toDate() | timeFormat}} - {{appointment.contactInfo.name}} - {{appointment.durationInMin}} minutter
+      <mat-list-item *ngFor="let appointment of appointments" class="appointment-item">
+        <div class="appointment-info">
+          <span>Tid: {{appointment.dateTime.toDate() | date}} {{appointment.dateTime.toDate() | timeFormat}}</span>
+          <span>Navn: {{appointment.contactInfo.name}}</span>
+          <span>Tlf: <a href="tel:{{appointment.contactInfo.phone}}">{{appointment.contactInfo.phone}}</a></span>
+          <span>Epost: <a href="mailto:{{appointment.contactInfo.email}}">{{appointment.contactInfo.email}}</a></span>
+          <span>Varighet: {{appointment.durationInMin}} minutter</span>
+        </div>
       </mat-list-item>
     </mat-list>
   </mat-card-content>

@@ -12,6 +12,12 @@ export class ServiceListItemComponent implements OnInit {
   service: Service;
 
   @Input()
+  showImage = true;
+
+  @Input()
+  isSelected = false;
+
+  @Input()
   showOrderButton = true;
 
   constructor() { }

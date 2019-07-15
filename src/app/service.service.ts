@@ -33,4 +33,8 @@ export class ServiceService {
     this.db.collection<Service>('services').add(service);
   }
 
+  update(service: Service){
+    this.db.collection<Service>('services').doc(service.key).update(service);
+  }
+
 }

@@ -10,6 +10,8 @@ export class ServiceSelectorComponent implements OnInit {
 
   @Input()
   services: Service[] = [];
+  @Input()
+  serviceSelected: Service;
 
   @Output()
   selectedService = new EventEmitter<Service>();

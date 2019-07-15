@@ -1,5 +1,9 @@
 <div class="services">
   <div class="service-item" *ngFor="let service of services">
-      <app-service-list-item (click)="emitSelectedService(service)" [service]="service" [showOrderButton]="false"></app-service-list-item>
+      <app-service-list-item (click)="emitSelectedService(service)" 
+      [service]="service" 
+      [showOrderButton]="false"
+      [showImage]="false"
+      [isSelected]="service.key === serviceSelected.key"></app-service-list-item>
   </div>
 </div>

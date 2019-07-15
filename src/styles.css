@@ -1,7 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+html{
+  height: 100%;
+}
 
 body{
     font-family: 'Roboto', sans-serif;
+    min-height: 100%;
+    position: relative;
+    padding-bottom: 95px;
 }
 
 .flex {
@@ -13,3 +19,5 @@ body{
 mat-divider {
   border-top-color: rgba(0,0,255,0.5);
 }
+
+

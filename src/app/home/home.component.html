@@ -1,5 +1,4 @@
 <div class="container" style="height: 600px; overflow:hidden">
-  <img width="100%" src="https://firebasestorage.googleapis.com/v0/b/skude-bilpleie.appspot.com/o/car-carwash-clean-6003.jpg?alt=media&token=d649204c-965c-4167-b9cc-7fce9ac24276" />
   <div class="header">
     <h1>Skude Bilpleie</h1>
   </div>
@@ -8,13 +7,13 @@
 
 <div class="body">
   <h2>Tjenester</h2>
-  <span style="max-width: 50%;">
-    Vi er opptatt av å gi en god kunde opplevelse og tilbyr dermed flere pakker med ferdig satt pris slik at du 
-    ikke får noen overraskelser. Velg en av tjenestene nedenfor og bestill en avtale idag!
+  <span class="intro-text">
+  Vi er opptatt av å gi en god kunde opplevelse og tilbyr dermed flere pakker med ferdig satt pris slik at du 
+  ikke får noen overraskelser. Velg en av tjenestene nedenfor og bestill en avtale idag!
   </span>
   <div style="display: flex; justify-content: space-between; flex-wrap: wrap; margin-top: 20px">
 
-    <app-service-list-item style="width: 45%; margin-bottom: 20px;" *ngFor="let service of services" [service]="service"></app-service-list-item>
+    <app-service-list-item class="service-card" *ngFor="let service of services" [service]="service"></app-service-list-item>
   </div>
 </div>
 

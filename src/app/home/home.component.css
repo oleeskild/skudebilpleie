@@ -3,6 +3,9 @@
     width: 100%;
     text-align: center;
 
+    background-image: url('https://firebasestorage.googleapis.com/v0/b/skude-bilpleie.appspot.com/o/car-carwash-clean-6003.jpg?alt=media&token=d649204c-965c-4167-b9cc-7fce9ac24276');
+    background-size:cover;
+    background-repeat: no-repeat;
   }
   
   /* Make the image responsive */
@@ -10,6 +13,12 @@
     width: 100%;
     height: auto;
   }
+
+  .intro-text{
+    width: 50%;
+    
+  }
+  
 
   .container .header{
     position: absolute;
@@ -26,13 +35,13 @@
     font-style: normal;
     font-size: 140px;
     letter-spacing: -.03em;
-    line-height: .8em;
+    line-height: .9em;
     text-transform: none;
     width: 100%;
 }
   .container .btn {
     position: absolute;
-    top: 66%;
+    top: 70%;
     left: 50%;
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
@@ -52,3 +61,23 @@
   .body{
       padding: 75px 175px;
   }
+  .service-card{
+    width: 45%; 
+    margin-bottom: 20px;
+  }
+
+  @media (max-width: 800px){
+    .intro-text{
+      width: 90%;
+    }
+
+    .body{
+      padding: 20px 30px;
+    }
+    .service-card{
+      width: 90%; 
+      margin-bottom: 20px;
+    }
+  }
+
+  

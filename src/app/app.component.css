@@ -3,3 +3,7 @@ button {
     text-transform: capitalize;
     cursor: pointer;
 }
+
+footer {
+    background-color: #85B3D1FF;
+}

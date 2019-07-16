@@ -1,7 +1,20 @@
 p.information {
-    height: 130px;
+    /* height: 130px; */
 }
 
 .highlight>mat-card{
-    background-color: rgba(33, 150, 243, 0.1);
+    background-color: rgba(0,0,0,0.05);
+}
+.item:hover{
+    transform: scale(1.05);
+}
+
+.order-button {
+    margin-left: 15px;
+    margin-bottom: 10px;
+    background-color: #D9B48FFF;
+    color: white;
+    width: 100%;
+    font-size: 20px;
+    padding: 8px;
 }

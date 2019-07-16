@@ -1,57 +1,96 @@
 .container {
     position: relative;
+    height: 400px;
     width: 100%;
-    text-align: center;
+    display: flex;
 
-    background-image: url('https://firebasestorage.googleapis.com/v0/b/skude-bilpleie.appspot.com/o/car-carwash-clean-6003.jpg?alt=media&token=d649204c-965c-4167-b9cc-7fce9ac24276');
+    /* background-image: url('https://firebasestorage.googleapis.com/v0/b/skude-bilpleie.appspot.com/o/car-carwash-clean-6003.jpg?alt=media&token=d649204c-965c-4167-b9cc-7fce9ac24276');
     background-size:cover;
     background-repeat: no-repeat;
+ */
+
   }
-  
-  /* Make the image responsive */
-  .container img {
+
+  .logo>img {
+    height: 80px;
+  }
+
+  .background-graphic {
+    height: 100%;
+    width: 50%;
+    min-width: 450px;
+    background: #85B3D1FF;
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .background-image {
+    z-index: -2;
+    width: 75%;
+  }
+
+  .background-image img {
+
     width: 100%;
     height: auto;
   }
 
+  .background-graphic:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background: #85B3D1FF;
+    -webkit-transform-origin: 100% 0;
+    -ms-transform-origin: 100% 0;
+    transform-origin: 100% 0;
+    transform: skew(-18deg);
+    z-index: -1;
+  }
+
   .intro-text{
     width: 50%;
-    
+    color: rgba(0,0,0,0.7);
+    max-width: 450px;
+    padding-bottom: 20px;
+  }
+
+  .ingress{
+    text-align: start;
+    padding: 20px;
+    max-width: 400px;
+    color: rgba(0,0,0,0.8);
   }
   
 
   .container .header{
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    width: 100%;
+    padding-left: 20px;
+    display: flex;
   }
   h1{
-    color:white;
-    font-family: futura-pt;
+    color: black;
+    font-family: 'Roboto';
     font-weight: 800;
     font-style: normal;
-    font-size: 140px;
+    font-size: 72px;
     letter-spacing: -.03em;
-    line-height: .9em;
     text-transform: none;
     width: 100%;
+    margin: 0px;
 }
   .container .btn {
-    position: absolute;
-    top: 70%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-   /* background-color: #555; */
+    background-color: #D9B48FFF;
     color: white;
     font-size: 24px;
     padding: 12px 24px;
     border: none;
     cursor: pointer;
     border-radius: 5px;
+    max-width: 300px;
+    margin: 10px 20px;
   }
   
   .container .btn:hover {
@@ -59,11 +98,40 @@
   }
 
   .body{
-      padding: 75px 175px;
+      padding: 40px 175px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .body>h2{
+    font-size: 3em;
+    margin-bottom: 20px;
   }
   .service-card{
     width: 45%; 
     margin-bottom: 20px;
+  }
+
+
+  @media (max-width: 1100px){
+    .container {
+      flex-direction: column-reverse;
+      height: 600px;
+    }
+
+    .background-image{
+      width: 100%;
+      margin-bottom: -10px;
+    }
+    .background-graphic{
+      width: 100%;
+      padding: 20px 0;
+    }
+
+    .background-graphic::after{
+      display: none;
+    }
   }
 
   @media (max-width: 800px){
@@ -73,6 +141,12 @@
 
     .body{
       padding: 20px 30px;
+    }
+    h1 {
+      font-size: 56px;
+    }
+    .logo>img {
+      height: 60px;
     }
     .service-card{
       width: 90%; 

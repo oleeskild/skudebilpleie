@@ -1,15 +1,20 @@
+.stepper {
+    border: 1px solid rgba(0,0,0,0.3);
+}
 
 .container{
     display: flex;
+    margin-right: 20px;
+    
 }
 
 .schedueler{
-    padding: 125px 50px;
-    width: 1200px;
+    padding: 25px 50px;
+    min-width: 60vw;
 }
 
 .about-us {
-    padding: 125px 0;
+    padding: 25px 0;
 }
 
 .time-picker{
@@ -58,6 +63,19 @@
     .main-content{
     padding-top: 60px;
     padding-bottom: 60px;
+    }
+}
+
+@media(max-width: 1000px){
+    .container{
+        flex-direction: column;
+    }
+
+    .schedueler {
+        padding: 0 20px;
+    }
+    .about-us {
+        padding: 20px;
     }
 }
 

@@ -14,8 +14,8 @@ import {ContactInfo} from "../models/contact-info";
 })
 export class AppointmentSchedulerComponent implements OnInit {
 
-  serviceStepName = "Velg tjeneste";
-  dateStepName = "Velg tid";
+  serviceStepName = "Velg en pakke som passer for deg og bilen din";
+  dateStepName = "Velg når det passer for deg";
 
   services: Service[] = [];
 

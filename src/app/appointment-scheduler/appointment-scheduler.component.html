@@ -1,10 +1,26 @@
+<mat-toolbar style="background-color: #85B3D1FF; height: 100px;">
+  <div style="display:flex; justify-content: baseline; align-items: center">
+
+    <img height="60" src="https://cdn0.iconfinder.com/data/icons/vehicle/500/108-512.png" style="margin-right: 5px"/>
+    <span [routerLink]="['/home']" style="cursor: pointer; font-size: 40px; color: black; font-weight: 600;">Skude Bilpleie</span>
+    <span style="justify-self: end;">
+      <button *ngIf="isAdmin" color="accent" style="font-size: 16px" mat-button [routerLink]="['admin']">Admin Oversikt</button>
+      <button *ngIf="isAdmin" color="accent" style="font-size: 16px" mat-button (click)="logout()">Logg ut</button>
+    </span>
+  </div>
+</mat-toolbar>
 <div class="container">
+  
 <div class="schedueler">
   <h1>Bestill Avtale</h1>
-  <mat-divider></mat-divider>
+  <div style="padding-bottom: 10px; max-width: 550px; color: rgba(0,0,0,0.7)">
+    Vi tilbyr ferdige pakker med fastsatt pris for å gjøre det lett for deg å forutsi kostnad og tid. 
+    Finn den pakken som passer for deg og din bil og bestill en avtale på 1-2-3.
+  </div>
+  <mat-divider style="margin: 5px; padding: 10px;"></mat-divider>
 
   <div class="container">
-    <mat-vertical-stepper [linear]="true" #stepper>
+    <mat-vertical-stepper class="stepper" [linear]="true" #stepper>
       <mat-step>
         <ng-template matStepLabel>{{serviceStepName}}</ng-template>
         <app-service-selector [services]="services"
